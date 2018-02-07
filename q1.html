@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <script>
+      
+      var state = true;
+      
+      function toggleLight() {
+        var image = document.getElementById("image");
+        state = !state ;
+        document.getElementById("switch").textContent = state ? "OFF" : "ON";
+        image.src = state ? "lon.jpg" : "loff.jpg" ;
+      }
+
+      function startTimer() {
+        var time = parseInt(document.getElementById("time").value);
+        var id = setInterval(countDownTimer, 1000);
+        document.getElementById("timer").innerHTML = time
+        function countDownTimer(){
+          time -=1;
+          
+          if(time<=0){
+            document.getElementById("image").src = "loff.jpg";
+            clearInterval(id);
+            document.getElementById("switch").textContent = "ON";
+            state = false;
+          }
+          document.getElementById("timer").innerHTML = time
+         
+        }
+      }
+
+
+    </script>
+  </head>
+  <body>
+    
+    
+    <div >
+      <form>
+        <input type="text" id="time">
+        <input type="button" value="開關倒數" onclick="startTimer()">
+        <h2>倒數時間</h2>
+        <div id="timer">
+        0
+        </div>
+    
+      </form>
+    </div>
+    <img id="image" src="lon.jpg" height="300px" width="300px">
+    <button class="button" onclick="toggleLight();" id="switch">ON</button>
+
+  </body>
+
+</html>

@@ -1,0 +1,94 @@
+<html>
+  <head>
+    
+  </head>
+  <body>
+    
+    <div class="container">
+      <input type="text" id="input">
+      <form>
+        <input type="radio" checked="true" onclick="setRadio1()" id="radio1">緊急<br>
+        <input type="radio" onclick="setRadio2()" id="radio2">不緊急<br>
+      </form>
+      <button onclick="createToDo()"> + </button>
+
+      <div id="todolist"></div>
+    </div>
+
+
+
+    <script>
+      function setRadio1() {
+        var radio1 = document.getElementById("radio1");
+        var radio2 = document.getElementById("radio2");
+        console.log(this.checked = !this.checked);
+        console.log(this == radio1);
+        radio2.checked = false;
+        
+      }
+
+      function setRadio2() {
+        var radio1 = document.getElementById("radio1");
+        var radio2 = document.getElementById("radio2");
+        console.log(this.checked = !this.checked);
+        console.log(this == radio1);
+        radio1.checked = false;
+        
+      }
+
+
+      function createToDo(){
+        var todo = document.createElement("div");    // To-Do div
+        var span = document.createElement("span");    // To-Do Span
+        var replaceButton = document.createElement("button");    // To-Do replace button
+        var removeButton = document.createElement("button");    // To-Do remove button
+        var input = document.getElementById("input").value;
+        var state = document.getElementById("radio1").checked;
+
+        if (input == "") {
+          input = "廢文一篇";
+        }
+        span.innerHTML = input;
+        todo.appendChild(span);
+
+        if(state){
+          todo.style.color = "red";
+        }
+        else{
+          todo.style.color = "green";
+        }
+
+        replaceButton.onclick = function() {
+          var input = document.getElementById("input").value;
+          if (input == "") {
+            alert("你並沒有輸入任何文字");
+            return;
+          }
+          this.parentNode.firstChild.innerHTML = input;
+          document.getElementById("input").value = ""; 
+        }
+
+        replaceButton.textContent = "R";
+        todo.appendChild(replaceButton);
+
+        removeButton.onclick = function() {
+          var answer = confirm("Are you sure?");
+          if(answer){
+            todo.style.color = "green";
+            removeButton.parentNode.removeChild(removeButton);
+            replaceButton.parentNode.removeChild(replaceButton);
+          }
+          
+        }
+
+        removeButton.textContent = "V";
+        todo.appendChild(removeButton);
+
+        var container = document.getElementById("todolist");
+        container.appendChild(todo)
+      }
+
+      
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <script>
+      
+      
+      function validate(){
+        var code = document.getElementById("nric").value;
+        document.getElementById("result").innerHTML = " ";
+        if (code == ""){
+          alert("can be empty");
+        }
+        else if (!isNaN(code)){
+          alert("can be number");
+        }
+        else if(code.length != 10){
+          alert("length not correct.");
+        }else { 
+          if(code[1] == "1"){
+            document.getElementById("result").innerHTML = "某男通過驗證";
+          }
+          else if(code[1]=="2"){
+            document.getElementById("result").innerHTML = "某女通過驗證";
+          }
+          else{
+            alert("資料錯誤");
+          }
+        }
+      }
+
+
+    </script>
+  </head>
+  <body>
+    
+    
+    <div >
+      <form>
+        <input type="text" id="nric">
+        <input type="button" value="驗證" onclick="validate()">
+        
+        <p id="result">
+        
+        </p>
+    
+      </form>
+    </div>
+    
+
+  </body>
+
+</html>
