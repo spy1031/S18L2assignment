@@ -11,6 +11,7 @@
         image.src = state ? "lon.jpg" : "loff.jpg" ;
       }
 
+
       function startTimer() {
         var time = parseInt(document.getElementById("time").value);
         var id = setInterval(countDownTimer, 1000);
@@ -47,7 +48,7 @@
       </form>
     </div>
     <img id="image" src="lon.jpg" height="300px" width="300px">
-    <button class="button" onclick="toggleLight();" id="switch">ON</button>
+    <button class="button" onclick="toggleLight();" id="switch">OFF</button>
 
   </body>
 
